@@ -44,9 +44,9 @@
 									<td>{{ $DR->nama }}</td>
 									<td>{{ $DR->jabatan }}</td>
 									<td>{{ $DR->kinerja }}</td>
-									<td>{{ $DR->Kedisiplinan }}</td>
-									<td>{{ $DR->Inisiatif }}</td>
-									<td>{{ $DR->Kerjasama }}</td>
+									<td>{{ $DR->kedisiplinan }}</td>
+									<td>{{ $DR->inisiatif }}</td>
+									<td>{{ $DR->kerjasama }}</td>
 									<td>{{ $DR->presensi }} <span>%</span></td>
 									<td>
 										<button type="button" class="btn btn-info btn-toastr">

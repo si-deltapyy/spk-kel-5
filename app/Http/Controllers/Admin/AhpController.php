@@ -489,11 +489,11 @@ class AhpController extends Controller
     public function posthasilrekomendasi(Request $request)
     {
         // Select data dulu
-        $harga = Comparisons::select('harga')->orderBY('tipe', 'asc')->get();
-        $lantai = Comparisons::select('lantai')->orderBY('tipe', 'asc')->get();
-        $luas = Comparisons::select('luas')->orderBY('tipe', 'asc')->get();
-        $kamar = Comparisons::select('kamar')->orderBY('tipe', 'asc')->get();
-        $garasi = Comparisons::select('garasi')->orderBY('tipe', 'asc')->get();
+        $harga = Comparisons::select('kinerja')->orderBY('noStaff', 'asc')->get();
+        $lantai = Comparisons::select('kedisiplinan')->orderBY('noStaff', 'asc')->get();
+        $luas = Comparisons::select('inisiatif')->orderBY('noStaff', 'asc')->get();
+        $kamar = Comparisons::select('kerjasama')->orderBY('noStaff', 'asc')->get();
+        $garasi = Comparisons::select('presensi')->orderBY('noStaff', 'asc')->get();
 
         // variabel penampung nilai kedalam array
         $datahargaarr = [];
@@ -1087,51 +1087,52 @@ class AhpController extends Controller
         $data_altl = "";
         $data_crt = "";
         // dd($name);
-        if ($name == 'Harga') {
-            $data_alth = Alternative::orderBy('harga', 'asc')
-                ->orderBy('harga', 'asc')
-                ->orderBy('garasi', 'asc')
-                ->orderBy('kamar', 'desc')
-                ->orderBy('lantai', 'desc')
-                ->orderBy('luas', 'desc')
+        if ($name == 'Kinerja') {
+            $data_alth = Alternative::orderBy('kinerja', 'desc')
+                ->orderBy('kinerja', 'asc')
+                ->orderBy('presensi', 'asc')
+                ->orderBy('inisiatif', 'desc')
+                ->orderBy('kerjasama', 'desc')
+                ->orderBy('kedisiplinan', 'desc')
                 ->paginate(3);
             $data_crt = SubCriteria::select('name')->distinct()->get();
             return view('admin/package/alternative/index', [
                 'data_pilih' => $data_alth,
                 'data_crt' => $data_crt
             ]);
-        } else if ($name == 'Kamar') {
-            $data_altk = Alternative::orderBy('kamar', 'desc')
-                ->orderBy('harga', 'asc')
-                ->orderBy('garasi', 'asc')
-                ->orderBy('kamar', 'desc')
-                ->orderBy('lantai', 'desc')
-                ->orderBy('luas', 'desc')
+        } else if ($name == 'Kedisiplinan') {
+            $data_altk = Alternative::orderBy('kedisiplinan', 'desc')
+                ->orderBy('kinerja', 'asc')
+                ->orderBy('presensi', 'asc')
+                ->orderBy('inisiatif', 'desc')
+                ->orderBy('kerjasama', 'desc')
+                // ->orderBy('kedisiplinan', 'desc')
                 ->paginate(3);
             $data_crt = SubCriteria::select('name')->distinct()->get();
             return view('admin/package/alternative/index', [
                 'data_pilih' => $data_altk,
                 'data_crt' => $data_crt
             ]);
-        } else if ($name == 'Lantai') {
-            $data_altl = Alternative::orderBy('lantai', 'desc')
-                ->orderBy('harga', 'asc')
-                ->orderBy('garasi', 'asc')
-                ->orderBy('kamar', 'desc')
-                // ->orderBy('lantai', 'desc')
-                ->orderBy('luas', 'desc')
+        } else if ($name == 'Inisiatif') {
+            $data_altl = Alternative::orderBy('inisiatif', 'desc')
+                ->orderBy('kinerja', 'asc')
+                ->orderBy('presensi', 'asc')
+                ->orderBy('inisiatif', 'asc')
+                ->orderBy('kerjasama', 'desc')
+                ->orderBy('kedisiplinan', 'desc')
                 ->paginate(3);
             $data_crt = SubCriteria::select('name')->distinct()->get();
             return view('admin/package/alternative/index', [
                 'data_pilih' => $data_altl,
                 'data_crt' => $data_crt
             ]);
-        } else if ($name == 'Garasi') {
-            $data_altg = Alternative::orderBy('garasi', 'asc')
-                ->orderBy('harga', 'asc')
-                ->orderBy('kamar', 'desc')
-                ->orderBy('lantai', 'desc')
-                ->orderBy('luas', 'desc')
+        } else if ($name == 'Presensi') {
+            $data_altg = Alternative::orderBy('presensi', 'desc')
+                ->orderBy('kinerja', 'asc')
+                ->orderBy('presensi', 'asc')
+                ->orderBy('inisiatif', 'desc')
+                ->orderBy('kerjasama', 'desc')
+                ->orderBy('kedisiplinan', 'desc')
                 ->paginate(3);
             $data_crt = SubCriteria::select('name')->distinct()->get();
             return view('admin/package/alternative/index', [
@@ -1139,12 +1140,12 @@ class AhpController extends Controller
                 'data_crt' => $data_crt
             ]);
         } else {
-            $data_alts = Alternative::orderBy('luas', 'desc')
-                ->orderBy('harga', 'asc')
-                ->orderBy('garasi', 'asc')
-                ->orderBy('kamar', 'desc')
-                ->orderBy('lantai', 'desc')
-                // ->orderBy('luas', 'desc')
+            $data_alts = Alternative::orderBy('kerjasama', 'desc')
+                ->orderBy('kinerja', 'asc')
+                ->orderBy('presensi', 'asc')
+                ->orderBy('inisiatif', 'desc')
+                // ->orderBy('kerjasama', 'desc')
+                ->orderBy('kedisiplinan', 'desc')
                 ->paginate(3);
             $data_crt = SubCriteria::select('name')->distinct()->get();
             return view('admin/package/alternative/index', [

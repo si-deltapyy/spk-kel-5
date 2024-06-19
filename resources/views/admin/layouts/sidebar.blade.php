@@ -27,8 +27,8 @@
 							<li><a href="/admin/alternative"><i class="fa fa-random"></i><span>Alternative</span></a></li>
 							@endif
 							<li><a href="/ahp/bobot"><i class="fa fa-random"></i>Bobot Kriteria</a></li>
-							<li><a href="/admin/ahp/bobot/postbobot"><i class="fa fa-random"></i>Normalisasi Matriks</a></li>
-							<li><a href="/admin/ahp/hasil"><i class="fa fa-random"></i>Hasil Perhitungan</a></li>
+							<!-- <li><a href="/admin/ahp/bobot/postbobot"><i class="fa fa-random"></i>Normalisasi Matriks</a></li>
+							<li><a href="/admin/ahp/hasil"><i class="fa fa-random"></i>Hasil Perhitungan</a></li> -->
 							<li><a href="/ahp/bobot/kesimpulan"><i class="fa fa-random"></i>Laporan Perhitungan</a></li>
 						</ul>
 					</div>

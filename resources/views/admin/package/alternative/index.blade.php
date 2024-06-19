@@ -50,14 +50,13 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th width="100px">Tipe Rumah</th>
-                                    <th>Jumlah Lantai</th>
-                                    <th>Kamar Tidur</th>
-                                    <th width="90px">Luas Tanah</th>
-                                    <th>Harga</th>
-                                    <th>Garasi</th>
-                                    <th>Keterangan</th>
-                                    <th>Gambar Rumah</th>
+                                    <th width="100px">ID Staff</th>
+                                    <th>Nama</th>
+                                    <th>Kinerja</th>
+                                    <th>Kedisiplinan</th>
+                                    <th>Inisiatif</th>
+                                    <th>Kerjasama</th>
+                                    <th>Presensi</th>
                                     <!-- <th>Hasil AHP</th> -->
                                 </tr>
                             </thead>
@@ -72,15 +71,13 @@
                                         echo $no++;
                                         ?>
                                     </td>
-                                    <td>{{ $DP->tipe }}</td>
-                                    <td>{{ $DP->lantai }}</td>
-                                    <td>{{ $DP->kamar }}</td>
-                                    <td>{{ $DP->luas }} M<sup>2</sup></td>
-                                    <td>Rp. {{ $DP->harga }}</td>
-                                    <td>{{ $DP->garasi }}</td>
-                                    <td>{{ $DP->keterangan }}</td>
-                                    <td><img src="{{ url('/data_file/'.$DP->gambar) }}" alt="{{ $DP->gambar }}" width="200px" height="100px"></td>
-                                    <td></td>
+                                    <td>{{ $DP->noStaff }}</td>
+                                    <td>{{ $DP->nama }}</td>
+                                    <td>{{ $DP->kinerja }}</td>
+                                    <td>{{ $DP->kedisiplinan }}</td>
+                                    <td>{{ $DP->inisiatif }}</td>
+                                    <td>{{ $DP->kerjasama }}</td>
+                                    <td>{{ $DP->presensi }} <span>%</span></td>
                                 </tr>
                                 @endforeach
                                 @else
