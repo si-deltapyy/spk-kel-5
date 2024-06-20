@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Alternative;
+use App\Models\Hasil;
 use Illuminate\Database\Seeder;
 
 class AlternativeSeeder extends Seeder
@@ -14,6 +15,7 @@ class AlternativeSeeder extends Seeder
     public function run()
     {
         // Kurang, Baik , Sangat Baik
+
         Alternative::create([
             'noStaff' => 'A001',
             'nama' => 'Budi Siswanto',
@@ -38,11 +40,11 @@ class AlternativeSeeder extends Seeder
             'noStaff' => 'A003',
             'nama' => 'Siti Maimunah',
             'jabatan' => 'Staff Kemahasiswaan',
-            'kinerja' => 'Baik',
+            'kinerja' => 'Kurang',
             'kedisiplinan' => 'Baik',
             'inisiatif' => 'Kurang',
             'kerjasama' => 'Kurang',
-            'presensi' => '50',
+            'presensi' => '15',
         ]);
         Alternative::create([
             'noStaff' => 'A004',

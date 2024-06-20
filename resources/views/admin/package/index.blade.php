@@ -24,7 +24,7 @@
 								<span class="icon"><i class="fa fa-thumbs-up"></i></span>
 								<p>
 									<span class="number"><?php echo $jml_alternative; ?></span>
-									<span class="title">Data Rumah</span>
+									<span class="title">Data Staff</span>
 								</p>
 							</div>
 						</div>
@@ -129,12 +129,12 @@
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th width="100px">Tipe Rumah</th>
-										<th>Jumlah Lantai</th>
-										<th>Kamar Tidur</th>
-										<th width="90px">Luas Tanah</th>
+										<th width="100px">ID Staff</th>
+										<th>Nama</th>
+										<th>Jabatan</th>
+										<!-- <th width="90px">Luas Tanah</th>
 										<th>Harga</th>
-										<th>Garasi</th>
+										<th>Garasi</th> -->
 										<!-- <th>Keterangan</th> -->
 										<!-- <th>Gambar Rumah</th> -->
 									</tr>
@@ -149,13 +149,13 @@
 											echo $no++;
 											?>
 										</td>
-										<td>{{ $DR->tipe }}</td>
-										<td>{{ $DR->lantai }}</td>
-										<td>{{ $DR->kamar }}</td>
-										<td>{{ $DR->luas }} M<sup>2</sup></td>
+										<td>{{ $DR->noStaff }}</td>
+										<td>{{ $DR->nama }}</td>
+										<td>{{ $DR->jabatan }}</td>
+										<!-- <td>{{ $DR->luas }} M<sup>2</sup></td>
 										<td>Rp. {{ $DR->harga }}</td>
 										<td>{{ $DR->garasi }}</td>
-										<!-- <td>{{ $DR->keterangan }}</td> -->
+										<td>{{ $DR->keterangan }}</td> -->
 										<!-- <td style="word-break: break-all">{{ $DR->gambar }}</td> -->
 									</tr>
 									@endforeach
@@ -170,7 +170,7 @@
 						<div class="panel-footer">
 							<div class="row">
 								<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
-								<div class="col-md-6 text-right"><a href="/admin/rumah" class="btn btn-primary">View All Activites</a></div>
+								<div class="col-md-6 text-right"><a href="/admin/staff" class="btn btn-primary">View All Activites</a></div>
 							</div>
 						</div>
 					</div>

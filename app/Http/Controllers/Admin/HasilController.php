@@ -15,7 +15,7 @@ class HasilController extends Controller
     public function tampildetail($tipe)
     {
         // mengambil data dari table daftar rumah
-        $data_rumah = Alternative::where('tipe', $tipe)->get();
+        $data_rumah = Alternative::where('noStaff', $tipe)->get();
 
         // mengirim data rumah ke view daftar rumah
         return view('customer/package/rumah/detail', [
@@ -23,10 +23,28 @@ class HasilController extends Controller
         ]);
     }
 
+    public function hasil()
+    {
+        
+        $datahasil = DB::table('hasils')
+            ->orderBy('ahp', 'desc')
+            ->get();
+
+        $datamax = DB::table('hasils')
+            ->orderBy('ahp', 'desc')
+            ->limit(1)
+            ->get();
+
+        return view('admin/package/ahp/hasil', [
+            'data_hasil' => $datahasil,
+            'data_max' => $datamax
+        ]);
+    }
+
     public function tampilkesimpulan($tipe)
     {
         // mengambil data dari table daftar rumah
-        $data_rumah = Hasil::where('tipe', $tipe)->get();
+        $data_rumah = Hasil::where('noStaff', $tipe)->get();
 
         // mengirim data rumah ke view daftar rumah
         return view('customer/package/rumah/kesimpulan', [

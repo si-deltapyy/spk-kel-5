@@ -62,9 +62,9 @@
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">SI Sistem Pendukung Keputusan Pemilihan Rumah</h1>
+							<h1 class="heading">SI Sistem Pendukung Keputusan Penilaian Staff</h1>
 							<h2 class="heading">Dengan menggunakan metode AHP</h2>
-							<p>by The Bluzz Team</p>
+							<p>by Five Team</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>

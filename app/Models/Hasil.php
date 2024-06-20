@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Hasil extends Model
 {
     use HasFactory;
-    protected $fillable = ['tipe','lantai','kamar','luas','harga','garasi','gambar','ahp'];
+    protected $fillable = [
+        
+    'noStaff', 
+    'kinerja',
+    'kedisiplinan',
+    'inisiatif',
+    'kerjasama',
+    'presensi',
+    'ahp'
+];
     protected $dates = ['deleted_at'];
 }

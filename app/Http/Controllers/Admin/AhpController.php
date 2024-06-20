@@ -486,598 +486,755 @@ class AhpController extends Controller
     }
 
     // public function hasilrekomendasi(Request $request){
+    // public function posthasilrekomendasi(Request $request)
+    // {
+    //     // Select data dulu
+    //     $harga = Comparisons::select('kinerja')->orderBY('noStaff', 'asc')->get();
+    //     $lantai = Comparisons::select('kedisiplinan')->orderBY('noStaff', 'asc')->get();
+    //     $luas = Comparisons::select('inisiatif')->orderBY('noStaff', 'asc')->get();
+    //     $kamar = Comparisons::select('kerjasama')->orderBY('noStaff', 'asc')->get();
+    //     $garasi = Comparisons::select('presensi')->orderBY('noStaff', 'asc')->get();
+
+    //     // variabel penampung nilai kedalam array
+    //     $datahargaarr = [];
+    //     $datalantaiarr = [];
+    //     $dataluasarr = [];
+    //     $datakamararr = [];
+    //     $datagarasiarr = [];
+
+    //     // buat masukin data kedalam bentuk array
+    //     foreach ($harga as $itemh) {
+    //         $datahargaarr[] = $itemh->kinerja; // Ensure you're accessing 'kinerja'
+    //     }
+        
+    //     foreach ($lantai as $iteml) {
+    //         $datalantaiarr[] = $iteml->kedisiplinan; // Ensure you're accessing 'kedisiplinan'
+    //     }
+        
+    //     foreach ($luas as $items) {
+    //         $dataluasarr[] = $items->inisiatif; // Ensure you're accessing 'inisiatif'
+    //     }
+        
+    //     foreach ($kamar as $itemk) {
+    //         $datakamararr[] = $itemk->kerjasama; // Ensure you're accessing 'kerjasama'
+    //     }
+        
+    //     foreach ($garasi as $itemg) {
+    //         $datagarasiarr[] = $itemg->presensi; // Ensure you're accessing 'presensi'
+    //     }
+
+    //     // buat manggil data arraynya
+    //     // dd($datahargaarr, $datalantaiarr, $dataluasarr, $datakamararr, $datagarasiarr);
+    //     // dd($harga, $lantai, $luas, $kamar, $garasi);
+
+    //     $t31 = $request->k31;
+    //     $t32 = $request->k32;
+    //     $t33 = $request->k33;
+    //     $t34 = $request->k34;
+    //     $t35 = $request->k35;
+
+    //     // kriteria harga
+    //     $hasilh = [];
+    //     $hasiljmlh = 0;
+    //     $j = 0;
+    //     $n = 0;
+    //     $i = 0;
+    //     // $z = 0;
+    //     $D = 0;
+    //     for ($m = 0; $m < (sizeof($datahargaarr) * sizeof($datahargaarr)) + (sizeof($datahargaarr) - 1); $m++) {
+    //         if ($i < sizeof($datahargaarr)) {
+    //             $hasilh[$n] = $datahargaarr[$i] / $datahargaarr[$j];
+    //             $i++;
+    //             $n++;
+    //         } else if ($j < sizeof($datahargaarr)) {
+    //             $j++;
+    //             $i = 0;
+    //         } else {
+    //             // Do nothing
+    //         }
+    //     }
+
+    //     // Jumlah kolom dan baris
+    //     $barish = sizeof($datahargaarr);
+    //     $kolomh = sizeof($datahargaarr);
+    //     $data2Dh = array();
+
+    //     // konversi jadi array 2d
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barish; $i++) {
+    //         for ($j = 0; $j < $kolomh; $j++) {
+    //             $data2Dh[$i][$j] = $hasilh[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // menghitung jumlah
+    //     $hasiljmlh = array();
+    //     for ($i = 0; $i < $kolomh; $i++) {
+    //         $jumlah = 0;
+    //         for ($j = 0; $j < $barish; $j++) {
+    //             $jumlah += $data2Dh[$j][$i];
+    //         }
+    //         $hasiljmlh[] = $jumlah;
+    //     }
+
+    //     // Menghitung normalisasi matriks
+    //     $z = 0;
+    //     $hasilbgh = [];
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datahargaarr) * sizeof($datahargaarr)) + (sizeof($datahargaarr) - 1); $m++) {
+    //         if ($i < sizeof($datahargaarr)) {
+    //             $hasilbgh[$z] = $hasilh[$z] / $hasiljmlh[$i];
+    //             $i++;
+    //             $z++;
+    //         } else {
+    //             $i = 0;
+    //         }
+    //     }
+
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barish; $i++) {
+    //         for ($j = 0; $j < $kolomh; $j++) {
+    //             $data2Dbgh[$i][$j] = $hasilbgh[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // Perkalian dengan hasil sebelumnya
+    //     $z = 0;
+    //     $hasiltmh = [];
+    //     $i = 0;
+    //     for ($j = 0; $j < $barish; $j++) {
+    //         $jumlah = 0;
+    //         for ($i = 0; $i < $kolomh; $i++) {
+    //             $jumlah += $data2Dbgh[$j][$i];
+    //         }
+    //         $hasiltmh[] = $jumlah;
+    //     }
+
+    //     for ($i = 0; $i < sizeof($datahargaarr); $i++) {
+    //         $jumlah = $hasiltmh[$i] / sizeof($datahargaarr);
+    //         $hasilpmh[] = $jumlah;
+    //     }
+
+    //     // Perkalian (asli)
+    //     for ($i = 0; $i < sizeof($datahargaarr); $i++) {
+    //         $jumlah = $hasilpmh[$i] * $t34;
+    //         $hasilppmh[] = $jumlah;
+    //     }
+
+
+    //     // kriteria lantai
+    //     $hasill = [];
+    //     $j = 0;
+    //     $n = 0;
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datalantaiarr) * sizeof($datalantaiarr)) + (sizeof($datalantaiarr) - 1); $m++) {
+    //         if ($i < sizeof($datalantaiarr)) {
+    //             $hasill[$n] = $datalantaiarr[$i] / $datalantaiarr[$j];
+    //             $i++;
+    //             $n++;
+    //         } else {
+    //             if ($j < sizeof($datalantaiarr)) {
+    //                 $j++;
+    //                 $i = 0;
+    //             }
+    //         }
+    //     }
+
+    //     // Jumlah kolom dan baris
+    //     $barisl = sizeof($datalantaiarr);
+    //     $koloml = sizeof($datalantaiarr);
+    //     $data2Dl = array();
+
+    //     // konversi jadi array 2d
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barisl; $i++) {
+    //         for ($j = 0; $j < $koloml; $j++) {
+    //             $data2Dl[$i][$j] = $hasill[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // menghitung jumlah
+    //     $hasiljmll = array();
+    //     for ($i = 0; $i < $koloml; $i++) {
+    //         $jumlah = 0;
+    //         for ($j = 0; $j < $barisl; $j++) {
+    //             $jumlah += $data2Dl[$j][$i];
+    //         }
+    //         $hasiljmll[] = $jumlah;
+    //     }
+
+    //     // Menghitung normalisasi matriks
+    //     $z = 0;
+    //     $hasilbgl = [];
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datalantaiarr) * sizeof($datalantaiarr)) + (sizeof($datalantaiarr) - 1); $m++) {
+    //         if ($i < sizeof($datalantaiarr)) {
+    //             $hasilbgl[$z] = $hasill[$z] / $hasiljmll[$i];
+    //             $i++;
+    //             $z++;
+    //         } else {
+    //             $i = 0;
+    //         }
+    //     }
+
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barisl; $i++) {
+    //         for ($j = 0; $j < $koloml; $j++) {
+    //             $data2Dbgl[$i][$j] = $hasilbgl[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // Perkalian dengan hasil sebelumnya
+    //     $z = 0;
+    //     $hasiltml = [];
+    //     $i = 0;
+    //     for ($j = 0; $j < $barisl; $j++) {
+    //         $jumlah = 0;
+    //         for ($i = 0; $i < $koloml; $i++) {
+    //             $jumlah += $data2Dbgl[$j][$i];
+    //         }
+    //         $hasiltml[] = $jumlah;
+    //     }
+
+    //     for ($i = 0; $i < sizeof($datalantaiarr); $i++) {
+    //         $jumlah = $hasiltml[$i] / sizeof($datalantaiarr);
+    //         $hasilpml[] = $jumlah;
+    //     }
+
+    //     // Perkalian (asli)
+    //     for ($i = 0; $i < sizeof($datalantaiarr); $i++) {
+    //         $jumlah = $hasilpml[$i] * $t31;
+    //         $hasilppml[] = $jumlah;
+    //     }
+
+    //     // kriteria luas
+    //     $hasils = [];
+    //     $j = 0;
+    //     $n = 0;
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($dataluasarr) * sizeof($dataluasarr)) + (sizeof($dataluasarr) - 1); $m++) {
+    //         if ($i < sizeof($dataluasarr)) {
+    //             $hasils[$n] = $dataluasarr[$i] / $dataluasarr[$j];
+    //             $i++;
+    //             $n++;
+    //         } else {
+    //             if ($j < sizeof($dataluasarr)) {
+    //                 $j++;
+    //                 $i = 0;
+    //             }
+    //         }
+    //     }
+
+    //     // Jumlah kolom dan baris
+    //     $bariss = sizeof($dataluasarr);
+    //     $koloms = sizeof($dataluasarr);
+    //     $data2Ds = array();
+
+    //     // konversi jadi array 2d
+    //     $counter = 0;
+    //     for ($i = 0; $i < $bariss; $i++) {
+    //         for ($j = 0; $j < $koloms; $j++) {
+    //             $data2Ds[$i][$j] = $hasils[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // menghitung jumlah
+    //     $hasiljmls = array();
+    //     for ($i = 0; $i < $koloms; $i++) {
+    //         $jumlah = 0;
+    //         for ($j = 0; $j < $bariss; $j++) {
+    //             $jumlah += $data2Ds[$j][$i];
+    //         }
+    //         $hasiljmls[] = $jumlah;
+    //     }
+
+    //     // Menghitung normalisasi matriks
+    //     $z = 0;
+    //     $hasilbgs = [];
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($dataluasarr) * sizeof($dataluasarr)) + (sizeof($dataluasarr) - 1); $m++) {
+    //         if ($i < sizeof($dataluasarr)) {
+    //             $hasilbgs[$z] = $hasils[$z] / $hasiljmls[$i];
+    //             $i++;
+    //             $z++;
+    //         } else {
+    //             $i = 0;
+    //         }
+    //     }
+
+    //     $counter = 0;
+    //     for ($i = 0; $i < $bariss; $i++) {
+    //         for ($j = 0; $j < $koloms; $j++) {
+    //             $data2Dbgs[$i][$j] = $hasilbgs[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // Perkalian dengan hasil sebelumnya
+    //     $z = 0;
+    //     $hasiltms = [];
+    //     $i = 0;
+    //     for ($j = 0; $j < $bariss; $j++) {
+    //         $jumlah = 0;
+    //         for ($i = 0; $i < $koloms; $i++) {
+    //             $jumlah += $data2Dbgs[$j][$i];
+    //         }
+    //         $hasiltms[] = $jumlah;
+    //     }
+
+    //     for ($i = 0; $i < sizeof($dataluasarr); $i++) {
+    //         $jumlah = $hasiltms[$i] / sizeof($dataluasarr);
+    //         $hasilpms[] = $jumlah;
+    //     }
+
+    //     // Perkalian (asli)
+    //     for ($i = 0; $i < sizeof($dataluasarr); $i++) {
+    //         $jumlah = $hasilpms[$i] * $t33;
+    //         $hasilppms[] = $jumlah;
+    //     }
+
+    //     // kriteria kamar
+    //     $hasilk = [];
+    //     $j = 0;
+    //     $n = 0;
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datakamararr) * sizeof($datakamararr)) + (sizeof($datakamararr) - 1); $m++) {
+    //         if ($i < sizeof($datakamararr)) {
+    //             $hasilk[$n] = $datakamararr[$i] / $datakamararr[$j];
+    //             $i++;
+    //             $n++;
+    //         } else {
+    //             if ($j < sizeof($datakamararr)) {
+    //                 $j++;
+    //                 $i = 0;
+    //             }
+    //         }
+    //     }
+
+    //     // Jumlah kolom dan baris
+    //     $barisk = sizeof($datakamararr);
+    //     $kolomk = sizeof($datakamararr);
+    //     $data2Dk = array();
+
+    //     // konversi jadi array 2d
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barisk; $i++) {
+    //         for ($j = 0; $j < $kolomk; $j++) {
+    //             $data2Dk[$i][$j] = $hasilk[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // menghitung jumlah
+    //     $hasiljmlk = array();
+    //     for ($i = 0; $i < $kolomk; $i++) {
+    //         $jumlah = 0;
+    //         for ($j = 0; $j < $barisk; $j++) {
+    //             $jumlah += $data2Dk[$j][$i];
+    //         }
+    //         $hasiljmlk[] = $jumlah;
+    //     }
+
+    //     // Menghitung normalisasi matriks
+    //     $z = 0;
+    //     $hasilbgk = [];
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datakamararr) * sizeof($datakamararr)) + (sizeof($datakamararr) - 1); $m++) {
+    //         if ($i < sizeof($datakamararr)) {
+    //             $hasilbgk[$z] = $hasilk[$z] / $hasiljmlk[$i];
+    //             $i++;
+    //             $z++;
+    //         } else {
+    //             $i = 0;
+    //         }
+    //     }
+
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barisk; $i++) {
+    //         for ($j = 0; $j < $kolomk; $j++) {
+    //             $data2Dbgk[$i][$j] = $hasilbgk[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // Perkalian dengan hasil sebelumnya
+    //     $z = 0;
+    //     $hasiltmk = [];
+    //     $i = 0;
+    //     for ($j = 0; $j < $barisk; $j++) {
+    //         $jumlah = 0;
+    //         for ($i = 0; $i < $kolomk; $i++) {
+    //             $jumlah += $data2Dbgk[$j][$i];
+    //         }
+    //         $hasiltmk[] = $jumlah;
+    //     }
+
+    //     for ($i = 0; $i < sizeof($datakamararr); $i++) {
+    //         $jumlah = $hasiltmk[$i] / sizeof($datakamararr);
+    //         $hasilpmk[] = $jumlah;
+    //     }
+
+    //     // Perkalian (asli)
+    //     for ($i = 0; $i < sizeof($datakamararr); $i++) {
+    //         $jumlah = $hasilpmk[$i] * $t32;
+    //         $hasilppmk[] = $jumlah;
+    //     }
+
+    //     // kriteria garasi
+    //     $hasilg = [];
+    //     $j = 0;
+    //     $n = 0;
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datagarasiarr) * sizeof($datagarasiarr)) + (sizeof($datagarasiarr) - 1); $m++) {
+    //         if ($i < sizeof($datagarasiarr)) {
+    //             $hasilg[$n] = $datagarasiarr[$i] / $datagarasiarr[$j];
+    //             $i++;
+    //             $n++;
+    //         } else {
+    //             if ($j < sizeof($datagarasiarr)) {
+    //                 $j++;
+    //                 $i = 0;
+    //             }
+    //         }
+    //     }
+
+    //     // Jumlah kolom dan baris
+    //     $barisg = sizeof($datagarasiarr);
+    //     $kolomg = sizeof($datagarasiarr);
+    //     $data2Dg = array();
+
+    //     // konversi jadi array 2d
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barisg; $i++) {
+    //         for ($j = 0; $j < $kolomg; $j++) {
+    //             $data2Dg[$i][$j] = $hasilg[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // menghitung jumlah
+    //     $hasiljmlg = array();
+    //     for ($i = 0; $i < $kolomg; $i++) {
+    //         $jumlah = 0;
+    //         for ($j = 0; $j < $barisg; $j++) {
+    //             $jumlah += $data2Dg[$j][$i];
+    //         }
+    //         $hasiljmlg[] = $jumlah;
+    //     }
+
+    //     // Menghitung normalisasi matriks
+    //     $z = 0;
+    //     $hasilbgg = [];
+    //     $i = 0;
+    //     for ($m = 0; $m < (sizeof($datagarasiarr) * sizeof($datagarasiarr)) + (sizeof($datagarasiarr) - 1); $m++) {
+    //         if ($i < sizeof($datagarasiarr)) {
+    //             $hasilbgg[$z] = $hasilg[$z] / $hasiljmlg[$i];
+    //             $i++;
+    //             $z++;
+    //         } else {
+    //             $i = 0;
+    //         }
+    //     }
+
+    //     $counter = 0;
+    //     for ($i = 0; $i < $barisg; $i++) {
+    //         for ($j = 0; $j < $kolomg; $j++) {
+    //             $data2Dbgg[$i][$j] = $hasilbgg[$counter];
+    //             $counter++;
+    //         }
+    //     }
+
+    //     // Perkalian dengan hasil sebelumnya
+    //     $z = 0;
+    //     $hasiltmg = [];
+    //     $i = 0;
+    //     for ($j = 0; $j < $barisg; $j++) {
+    //         $jumlah = 0;
+    //         for ($i = 0; $i < $kolomg; $i++) {
+    //             $jumlah += $data2Dbgg[$j][$i];
+    //         }
+    //         $hasiltmg[] = $jumlah;
+    //     }
+
+    //     for ($i = 0; $i < sizeof($datagarasiarr); $i++) {
+    //         $jumlah = $hasiltmg[$i] / sizeof($datagarasiarr);
+    //         $hasilpmg[] = $jumlah;
+    //     }
+
+    //     // Perkalian (asli)
+    //     for ($i = 0; $i < sizeof($datagarasiarr); $i++) {
+    //         $jumlah = $hasilpmg[$i] * $t35;
+    //         $hasilppmg[] = $jumlah;
+    //     }
+
+    //     // dd(
+    //     //     $hasilh,
+    //     //     $hasill,
+    //     //     $hasils,
+    //     //     $hasilk,
+    //     //     $hasilg,
+    //     //     $hasiljmlh,
+    //     //     $hasiljmll,
+    //     //     $hasiljmls,
+    //     //     $hasiljmlk,
+    //     //     $hasiljmlg,
+    //     //     $hasilbgh,
+    //     //     $hasilbgl,
+    //     //     $hasilbgs,
+    //     //     $hasilbgk,
+    //     //     $hasilbgg,
+    //     //     $hasiltmh,
+    //     //     $hasiltml,
+    //     //     $hasiltms,
+    //     //     $hasiltmk,
+    //     //     $hasiltmg,
+    //     //     $hasilpmh,
+    //     //     $hasilpml,
+    //     //     $hasilpms,
+    //     //     $hasilpmk,
+    //     //     $hasilpmg
+    //     // );
+
+
+    //     // Insert data ke table hasils
+    //     // $tipe = Alternative::select('tipe')->get();
+    //     $tipe = DB::table('alternatives')
+    //         ->select('noStaff')
+    //         ->get();
+
+    //     $hargat = DB::table('alternatives')
+    //         ->select('kinerja')
+    //         ->get();
+    //     $lantait = DB::table('alternatives')
+    //         ->select('kedisiplinan')
+    //         ->get();
+    //     $kamart = DB::table('alternatives')
+    //         ->select('kerjasama')
+    //         ->get();
+    //     $luast = DB::table('alternatives')
+    //         ->select('inisiatif')
+    //         ->get();
+    //     $garasit = DB::table('alternatives')
+    //         ->select('presensi')
+    //         ->get();
+
+    //     // dd($tipe[1]->noStaff);
+
+    //     // for ($i = 0; $i < sizeof($datahargaarr); $i++) {
+    //     //     $hasiltipe[] = $tipe[$i]->tipe;
+    //     // }
+
+    //     for ($i = 0; $i < sizeof($datahargaarr); $i++) {
+    //         $hasiljumlah[] = $hasilppmh[$i] + $hasilppml[$i] + $hasilppmk[$i] + $hasilppms[$i] + $hasilppmg[$i];
+    //     }
+
+    //     for ($i = 0; $i < sizeof($datahargaarr); $i++) {
+    //         Hasil::create([
+    //             'noStaff' => $tipe[$i]->noStaff,
+    //             'kedisiplinan' => $lantait[$i]->kedisiplinan,
+    //             'kerjasama' => $kamart[$i]->kerjasama,
+    //             'inisiatif' => $luast[$i]->inisiatif,
+    //             'kinerja' => $hargat[$i]->kinerja,
+    //             'presensi' => $garasit[$i]->presensi,
+    //             'ahp' => $hasiljumlah[$i]
+    //         ]);
+    //     }
+
+    //     // dd(
+    //     //     $tipe[0]->tipe,
+    //     //     $hasiltipe,
+    //     //     $hasiljumlah,
+    //     //     $json_tipe,
+    //     //     $json_harga,
+    //     //     $json_lantai,
+    //     //     $json_kamar,
+    //     //     $json_luas,
+    //     //     $json_garasi,
+    //     //     $hasilppmh,
+    //     //     $hasilppml,
+    //     //     $hasilppmk,
+    //     //     $hasilppms,
+    //     //     $hasilppmg,
+    //     //     $tipe
+    //     // );
+
+    //     $datahasil = DB::table('hasils')
+    //         ->orderBy('ahp', 'desc')
+    //         ->get();
+
+    //     $datamax = DB::table('hasils')
+    //         ->orderBy('ahp', 'desc')
+    //         ->limit(1)
+    //         ->get();
+
+    //     return view('admin/package/ahp/hasil', [
+    //         'data_hasil' => $datahasil,
+    //         'data_max' => $datamax
+    //     ]);
+    // }
+
     public function posthasilrekomendasi(Request $request)
-    {
-        // Select data dulu
-        $harga = Comparisons::select('kinerja')->orderBY('noStaff', 'asc')->get();
-        $lantai = Comparisons::select('kedisiplinan')->orderBY('noStaff', 'asc')->get();
-        $luas = Comparisons::select('inisiatif')->orderBY('noStaff', 'asc')->get();
-        $kamar = Comparisons::select('kerjasama')->orderBY('noStaff', 'asc')->get();
-        $garasi = Comparisons::select('presensi')->orderBY('noStaff', 'asc')->get();
+{
+    // Retrieve and organize data
+        
+    $harga = Comparisons::select('kinerja')->orderBy('noStaff', 'asc')->get();
+    $lantai = Comparisons::select('kedisiplinan')->orderBy('noStaff', 'asc')->get();
+    $luas = Comparisons::select('inisiatif')->orderBy('noStaff', 'asc')->get();
+    $kamar = Comparisons::select('kerjasama')->orderBy('noStaff', 'asc')->get();
+    $garasi = Comparisons::select('presensi')->orderBy('noStaff', 'asc')->get();
 
-        // variabel penampung nilai kedalam array
-        $datahargaarr = [];
-        $datalantaiarr = [];
-        $dataluasarr = [];
-        $datakamararr = [];
-        $datagarasiarr = [];
+    // Convert collections to arrays
+    $datakinerjaarr = $harga->pluck('kinerja')->toArray();
+    $datakedisiplinanarr = $lantai->pluck('kedisiplinan')->toArray();
+    $datainisiatifarr = $luas->pluck('inisiatif')->toArray();
+    $datakerjasamaarr = $kamar->pluck('kerjasama')->toArray();
+    $datapresensiarr = $garasi->pluck('presensi')->toArray();
 
-        // buat masukin data kedalam bentuk array
-        foreach ($harga as $itemh) {
-            $datahargaarr[] = $itemh->harga;
-        }
+    // Criteria weights from the request
+    $weights = [
+        'kinerja' => $request->k34,
+        'kedisiplinan' => $request->k31,
+        'inisiatif' => $request->k33,
+        'kerjasama' => $request->k32,
+        'presensi' => $request->k35
+    ];
 
-        foreach ($lantai as $iteml) {
-            $datalantaiarr[] = $iteml->lantai;
-        }
+    // Calculate normalized matrices and priorities
+    $result = [];
+    foreach (['kinerja', 'kedisiplinan', 'inisiatif', 'kerjasama', 'presensi'] as $key) {
+        $dataArr = ${"data{$key}arr"};
+        $weight = $weights[$key];
+        $normalizedMatrix = $this->calculateNormalizedMatrix($dataArr);
+        $priorityVector = $this->calculatePriorityVector($normalizedMatrix);
+        $result[$key] = $this->calculateWeightedPriority($priorityVector, $weight);
+    }
 
-        foreach ($luas as $items) {
-            $dataluasarr[] = $items->luas;
-        }
+        $h = 1;
+        $g = 1;
+        $s = 1;
+        $k = 1;
+        $l = 1;
+    $sumFunction = fn($h, $l, $s, $k, $g) => $h + $l + $s + $k + $g;
+    // Sum the results to get the final recommendation score
+        
+    $finalScores = array_map(
+        $sumFunction,
+        $result['kinerja'],
+        $result['kedisiplinan'],
+        $result['inisiatif'],
+        $result['kerjasama'],
+        $result['presensi']
+    );
 
-        foreach ($kamar as $itemk) {
-            $datakamararr[] = $itemk->kamar;
-        }
+    // dd($result['kinerja'], $result['kedisiplinan'],
+    // $result['inisiatif'],
+    // $result['kerjasama'],
+    // $result['presensi'], $datakinerjaarr);
 
-        foreach ($garasi as $itemg) {
-            $datagarasiarr[] = $itemg->garasi;
-        }
-
-        // buat manggil data arraynya
-        // dd($datahargaarr, $datalantaiarr, $dataluasarr, $datakamararr, $datagarasiarr);
-
-        $t31 = $request->k31;
-        $t32 = $request->k32;
-        $t33 = $request->k33;
-        $t34 = $request->k34;
-        $t35 = $request->k35;
-
-        // kriteria harga
-        $hasilh = [];
-        $hasiljmlh = 0;
-        $j = 0;
-        $n = 0;
-        $i = 0;
-        // $z = 0;
-        $D = 0;
-        for ($m = 0; $m < (sizeof($datahargaarr) * sizeof($datahargaarr)) + (sizeof($datahargaarr) - 1); $m++) {
-            if ($i < sizeof($datahargaarr)) {
-                $hasilh[$n] = $datahargaarr[$i] / $datahargaarr[$j];
-                $i++;
-                $n++;
-            } else if ($j < sizeof($datahargaarr)) {
-                $j++;
-                $i = 0;
-            } else {
-                // Do nothing
-            }
-        }
-
-        // Jumlah kolom dan baris
-        $barish = sizeof($datahargaarr);
-        $kolomh = sizeof($datahargaarr);
-        $data2Dh = array();
-
-        // konversi jadi array 2d
-        $counter = 0;
-        for ($i = 0; $i < $barish; $i++) {
-            for ($j = 0; $j < $kolomh; $j++) {
-                $data2Dh[$i][$j] = $hasilh[$counter];
-                $counter++;
-            }
-        }
-
-        // menghitung jumlah
-        $hasiljmlh = array();
-        for ($i = 0; $i < $kolomh; $i++) {
-            $jumlah = 0;
-            for ($j = 0; $j < $barish; $j++) {
-                $jumlah += $data2Dh[$j][$i];
-            }
-            $hasiljmlh[] = $jumlah;
-        }
-
-        // Menghitung normalisasi matriks
-        $z = 0;
-        $hasilbgh = [];
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datahargaarr) * sizeof($datahargaarr)) + (sizeof($datahargaarr) - 1); $m++) {
-            if ($i < sizeof($datahargaarr)) {
-                $hasilbgh[$z] = $hasilh[$z] / $hasiljmlh[$i];
-                $i++;
-                $z++;
-            } else {
-                $i = 0;
-            }
-        }
-
-        $counter = 0;
-        for ($i = 0; $i < $barish; $i++) {
-            for ($j = 0; $j < $kolomh; $j++) {
-                $data2Dbgh[$i][$j] = $hasilbgh[$counter];
-                $counter++;
-            }
-        }
-
-        // Perkalian dengan hasil sebelumnya
-        $z = 0;
-        $hasiltmh = [];
-        $i = 0;
-        for ($j = 0; $j < $barish; $j++) {
-            $jumlah = 0;
-            for ($i = 0; $i < $kolomh; $i++) {
-                $jumlah += $data2Dbgh[$j][$i];
-            }
-            $hasiltmh[] = $jumlah;
-        }
-
-        for ($i = 0; $i < sizeof($datahargaarr); $i++) {
-            $jumlah = $hasiltmh[$i] / sizeof($datahargaarr);
-            $hasilpmh[] = $jumlah;
-        }
-
-        // Perkalian (asli)
-        for ($i = 0; $i < sizeof($datahargaarr); $i++) {
-            $jumlah = $hasilpmh[$i] * $t34;
-            $hasilppmh[] = $jumlah;
-        }
-
-
-        // kriteria lantai
-        $hasill = [];
-        $j = 0;
-        $n = 0;
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datalantaiarr) * sizeof($datalantaiarr)) + (sizeof($datalantaiarr) - 1); $m++) {
-            if ($i < sizeof($datalantaiarr)) {
-                $hasill[$n] = $datalantaiarr[$i] / $datalantaiarr[$j];
-                $i++;
-                $n++;
-            } else {
-                if ($j < sizeof($datalantaiarr)) {
-                    $j++;
-                    $i = 0;
-                }
-            }
-        }
-
-        // Jumlah kolom dan baris
-        $barisl = sizeof($datalantaiarr);
-        $koloml = sizeof($datalantaiarr);
-        $data2Dl = array();
-
-        // konversi jadi array 2d
-        $counter = 0;
-        for ($i = 0; $i < $barisl; $i++) {
-            for ($j = 0; $j < $koloml; $j++) {
-                $data2Dl[$i][$j] = $hasill[$counter];
-                $counter++;
-            }
-        }
-
-        // menghitung jumlah
-        $hasiljmll = array();
-        for ($i = 0; $i < $koloml; $i++) {
-            $jumlah = 0;
-            for ($j = 0; $j < $barisl; $j++) {
-                $jumlah += $data2Dl[$j][$i];
-            }
-            $hasiljmll[] = $jumlah;
-        }
-
-        // Menghitung normalisasi matriks
-        $z = 0;
-        $hasilbgl = [];
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datalantaiarr) * sizeof($datalantaiarr)) + (sizeof($datalantaiarr) - 1); $m++) {
-            if ($i < sizeof($datalantaiarr)) {
-                $hasilbgl[$z] = $hasill[$z] / $hasiljmll[$i];
-                $i++;
-                $z++;
-            } else {
-                $i = 0;
-            }
-        }
-
-        $counter = 0;
-        for ($i = 0; $i < $barisl; $i++) {
-            for ($j = 0; $j < $koloml; $j++) {
-                $data2Dbgl[$i][$j] = $hasilbgl[$counter];
-                $counter++;
-            }
-        }
-
-        // Perkalian dengan hasil sebelumnya
-        $z = 0;
-        $hasiltml = [];
-        $i = 0;
-        for ($j = 0; $j < $barisl; $j++) {
-            $jumlah = 0;
-            for ($i = 0; $i < $koloml; $i++) {
-                $jumlah += $data2Dbgl[$j][$i];
-            }
-            $hasiltml[] = $jumlah;
-        }
-
-        for ($i = 0; $i < sizeof($datalantaiarr); $i++) {
-            $jumlah = $hasiltml[$i] / sizeof($datalantaiarr);
-            $hasilpml[] = $jumlah;
-        }
-
-        // Perkalian (asli)
-        for ($i = 0; $i < sizeof($datalantaiarr); $i++) {
-            $jumlah = $hasilpml[$i] * $t31;
-            $hasilppml[] = $jumlah;
-        }
-
-        // kriteria luas
-        $hasils = [];
-        $j = 0;
-        $n = 0;
-        $i = 0;
-        for ($m = 0; $m < (sizeof($dataluasarr) * sizeof($dataluasarr)) + (sizeof($dataluasarr) - 1); $m++) {
-            if ($i < sizeof($dataluasarr)) {
-                $hasils[$n] = $dataluasarr[$i] / $dataluasarr[$j];
-                $i++;
-                $n++;
-            } else {
-                if ($j < sizeof($dataluasarr)) {
-                    $j++;
-                    $i = 0;
-                }
-            }
-        }
-
-        // Jumlah kolom dan baris
-        $bariss = sizeof($dataluasarr);
-        $koloms = sizeof($dataluasarr);
-        $data2Ds = array();
-
-        // konversi jadi array 2d
-        $counter = 0;
-        for ($i = 0; $i < $bariss; $i++) {
-            for ($j = 0; $j < $koloms; $j++) {
-                $data2Ds[$i][$j] = $hasils[$counter];
-                $counter++;
-            }
-        }
-
-        // menghitung jumlah
-        $hasiljmls = array();
-        for ($i = 0; $i < $koloms; $i++) {
-            $jumlah = 0;
-            for ($j = 0; $j < $bariss; $j++) {
-                $jumlah += $data2Ds[$j][$i];
-            }
-            $hasiljmls[] = $jumlah;
-        }
-
-        // Menghitung normalisasi matriks
-        $z = 0;
-        $hasilbgs = [];
-        $i = 0;
-        for ($m = 0; $m < (sizeof($dataluasarr) * sizeof($dataluasarr)) + (sizeof($dataluasarr) - 1); $m++) {
-            if ($i < sizeof($dataluasarr)) {
-                $hasilbgs[$z] = $hasils[$z] / $hasiljmls[$i];
-                $i++;
-                $z++;
-            } else {
-                $i = 0;
-            }
-        }
-
-        $counter = 0;
-        for ($i = 0; $i < $bariss; $i++) {
-            for ($j = 0; $j < $koloms; $j++) {
-                $data2Dbgs[$i][$j] = $hasilbgs[$counter];
-                $counter++;
-            }
-        }
-
-        // Perkalian dengan hasil sebelumnya
-        $z = 0;
-        $hasiltms = [];
-        $i = 0;
-        for ($j = 0; $j < $bariss; $j++) {
-            $jumlah = 0;
-            for ($i = 0; $i < $koloms; $i++) {
-                $jumlah += $data2Dbgs[$j][$i];
-            }
-            $hasiltms[] = $jumlah;
-        }
-
-        for ($i = 0; $i < sizeof($dataluasarr); $i++) {
-            $jumlah = $hasiltms[$i] / sizeof($dataluasarr);
-            $hasilpms[] = $jumlah;
-        }
-
-        // Perkalian (asli)
-        for ($i = 0; $i < sizeof($dataluasarr); $i++) {
-            $jumlah = $hasilpms[$i] * $t33;
-            $hasilppms[] = $jumlah;
-        }
-
-        // kriteria kamar
-        $hasilk = [];
-        $j = 0;
-        $n = 0;
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datakamararr) * sizeof($datakamararr)) + (sizeof($datakamararr) - 1); $m++) {
-            if ($i < sizeof($datakamararr)) {
-                $hasilk[$n] = $datakamararr[$i] / $datakamararr[$j];
-                $i++;
-                $n++;
-            } else {
-                if ($j < sizeof($datakamararr)) {
-                    $j++;
-                    $i = 0;
-                }
-            }
-        }
-
-        // Jumlah kolom dan baris
-        $barisk = sizeof($datakamararr);
-        $kolomk = sizeof($datakamararr);
-        $data2Dk = array();
-
-        // konversi jadi array 2d
-        $counter = 0;
-        for ($i = 0; $i < $barisk; $i++) {
-            for ($j = 0; $j < $kolomk; $j++) {
-                $data2Dk[$i][$j] = $hasilk[$counter];
-                $counter++;
-            }
-        }
-
-        // menghitung jumlah
-        $hasiljmlk = array();
-        for ($i = 0; $i < $kolomk; $i++) {
-            $jumlah = 0;
-            for ($j = 0; $j < $barisk; $j++) {
-                $jumlah += $data2Dk[$j][$i];
-            }
-            $hasiljmlk[] = $jumlah;
-        }
-
-        // Menghitung normalisasi matriks
-        $z = 0;
-        $hasilbgk = [];
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datakamararr) * sizeof($datakamararr)) + (sizeof($datakamararr) - 1); $m++) {
-            if ($i < sizeof($datakamararr)) {
-                $hasilbgk[$z] = $hasilk[$z] / $hasiljmlk[$i];
-                $i++;
-                $z++;
-            } else {
-                $i = 0;
-            }
-        }
-
-        $counter = 0;
-        for ($i = 0; $i < $barisk; $i++) {
-            for ($j = 0; $j < $kolomk; $j++) {
-                $data2Dbgk[$i][$j] = $hasilbgk[$counter];
-                $counter++;
-            }
-        }
-
-        // Perkalian dengan hasil sebelumnya
-        $z = 0;
-        $hasiltmk = [];
-        $i = 0;
-        for ($j = 0; $j < $barisk; $j++) {
-            $jumlah = 0;
-            for ($i = 0; $i < $kolomk; $i++) {
-                $jumlah += $data2Dbgk[$j][$i];
-            }
-            $hasiltmk[] = $jumlah;
-        }
-
-        for ($i = 0; $i < sizeof($datakamararr); $i++) {
-            $jumlah = $hasiltmk[$i] / sizeof($datakamararr);
-            $hasilpmk[] = $jumlah;
-        }
-
-        // Perkalian (asli)
-        for ($i = 0; $i < sizeof($datakamararr); $i++) {
-            $jumlah = $hasilpmk[$i] * $t32;
-            $hasilppmk[] = $jumlah;
-        }
-
-        // kriteria garasi
-        $hasilg = [];
-        $j = 0;
-        $n = 0;
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datagarasiarr) * sizeof($datagarasiarr)) + (sizeof($datagarasiarr) - 1); $m++) {
-            if ($i < sizeof($datagarasiarr)) {
-                $hasilg[$n] = $datagarasiarr[$i] / $datagarasiarr[$j];
-                $i++;
-                $n++;
-            } else {
-                if ($j < sizeof($datagarasiarr)) {
-                    $j++;
-                    $i = 0;
-                }
-            }
-        }
-
-        // Jumlah kolom dan baris
-        $barisg = sizeof($datagarasiarr);
-        $kolomg = sizeof($datagarasiarr);
-        $data2Dg = array();
-
-        // konversi jadi array 2d
-        $counter = 0;
-        for ($i = 0; $i < $barisg; $i++) {
-            for ($j = 0; $j < $kolomg; $j++) {
-                $data2Dg[$i][$j] = $hasilg[$counter];
-                $counter++;
-            }
-        }
-
-        // menghitung jumlah
-        $hasiljmlg = array();
-        for ($i = 0; $i < $kolomg; $i++) {
-            $jumlah = 0;
-            for ($j = 0; $j < $barisg; $j++) {
-                $jumlah += $data2Dg[$j][$i];
-            }
-            $hasiljmlg[] = $jumlah;
-        }
-
-        // Menghitung normalisasi matriks
-        $z = 0;
-        $hasilbgg = [];
-        $i = 0;
-        for ($m = 0; $m < (sizeof($datagarasiarr) * sizeof($datagarasiarr)) + (sizeof($datagarasiarr) - 1); $m++) {
-            if ($i < sizeof($datagarasiarr)) {
-                $hasilbgg[$z] = $hasilg[$z] / $hasiljmlg[$i];
-                $i++;
-                $z++;
-            } else {
-                $i = 0;
-            }
-        }
-
-        $counter = 0;
-        for ($i = 0; $i < $barisg; $i++) {
-            for ($j = 0; $j < $kolomg; $j++) {
-                $data2Dbgg[$i][$j] = $hasilbgg[$counter];
-                $counter++;
-            }
-        }
-
-        // Perkalian dengan hasil sebelumnya
-        $z = 0;
-        $hasiltmg = [];
-        $i = 0;
-        for ($j = 0; $j < $barisg; $j++) {
-            $jumlah = 0;
-            for ($i = 0; $i < $kolomg; $i++) {
-                $jumlah += $data2Dbgg[$j][$i];
-            }
-            $hasiltmg[] = $jumlah;
-        }
-
-        for ($i = 0; $i < sizeof($datagarasiarr); $i++) {
-            $jumlah = $hasiltmg[$i] / sizeof($datagarasiarr);
-            $hasilpmg[] = $jumlah;
-        }
-
-        // Perkalian (asli)
-        for ($i = 0; $i < sizeof($datagarasiarr); $i++) {
-            $jumlah = $hasilpmg[$i] * $t35;
-            $hasilppmg[] = $jumlah;
-        }
-
-        // dd(
-        //     $hasilh,
-        //     $hasill,
-        //     $hasils,
-        //     $hasilk,
-        //     $hasilg,
-        //     $hasiljmlh,
-        //     $hasiljmll,
-        //     $hasiljmls,
-        //     $hasiljmlk,
-        //     $hasiljmlg,
-        //     $hasilbgh,
-        //     $hasilbgl,
-        //     $hasilbgs,
-        //     $hasilbgk,
-        //     $hasilbgg,
-        //     $hasiltmh,
-        //     $hasiltml,
-        //     $hasiltms,
-        //     $hasiltmk,
-        //     $hasiltmg,
-        //     $hasilpmh,
-        //     $hasilpml,
-        //     $hasilpms,
-        //     $hasilpmk,
-        //     $hasilpmg
-        // );
-
-
-        // Insert data ke table hasils
-        // $tipe = Alternative::select('tipe')->get();
-        $tipe = DB::table('alternatives')
-            ->select('tipe')
+    $tipe = DB::table('alternatives')
+            ->select('noStaff')
             ->get();
+    $hargat = DB::table('alternatives')
+        ->select('kinerja')
+        ->get();
+    $lantait = DB::table('alternatives')
+        ->select('kedisiplinan')
+        ->get();
+    $kamart = DB::table('alternatives')
+        ->select('kerjasama')
+        ->get();
+    $luast = DB::table('alternatives')
+        ->select('inisiatif')
+        ->get();
+    $garasit = DB::table('alternatives')
+        ->select('presensi')
+        ->get();
 
-        $hargat = DB::table('alternatives')
-            ->select('harga')
-            ->get();
-        $lantait = DB::table('alternatives')
-            ->select('lantai')
-            ->get();
-        $kamart = DB::table('alternatives')
-            ->select('kamar')
-            ->get();
-        $luast = DB::table('alternatives')
-            ->select('luas')
-            ->get();
-        $garasit = DB::table('alternatives')
-            ->select('garasi')
-            ->get();
-        $gambart = DB::table('alternatives')
-            ->select('gambar')
-            ->get();
-
-        // for ($i = 0; $i < sizeof($datahargaarr); $i++) {
-        //     $hasiltipe[] = $tipe[$i]->tipe;
-        // }
-
-        for ($i = 0; $i < sizeof($datahargaarr); $i++) {
-            $hasiljumlah[] = $hasilppmh[$i] + $hasilppml[$i] + $hasilppmk[$i] + $hasilppms[$i] + $hasilppmg[$i];
-        }
-
-        for ($i = 0; $i < sizeof($datahargaarr); $i++) {
-            Hasil::create([
-                'tipe' => $tipe[$i]->tipe,
-                'lantai' => $lantait[$i]->lantai,
-                'kamar' => $kamart[$i]->kamar,
-                'luas' => $luast[$i]->luas,
-                'harga' => $hargat[$i]->harga,
-                'garasi' => $garasit[$i]->garasi,
-                'gambar' => $gambart[$i]->gambar,
-                'ahp' => $hasiljumlah[$i]
-            ]);
-        }
-
-        // dd(
-        //     $tipe[0]->tipe,
-        //     $hasiltipe,
-        //     $hasiljumlah,
-        //     $json_tipe,
-        //     $json_harga,
-        //     $json_lantai,
-        //     $json_kamar,
-        //     $json_luas,
-        //     $json_garasi,
-        //     $hasilppmh,
-        //     $hasilppml,
-        //     $hasilppmk,
-        //     $hasilppms,
-        //     $hasilppmg,
-        //     $tipe
-        // );
-
-        $datahasil = DB::table('hasils')
-            ->orderBy('ahp', 'desc')
-            ->get();
-
-        $datamax = DB::table('hasils')
-            ->orderBy('ahp', 'desc')
-            ->limit(1)
-            ->get();
-
-        return view('admin/package/ahp/hasil', [
-            'data_hasil' => $datahasil,
-            'data_max' => $datamax
+    for ($i = 0; $i < sizeof($datakinerjaarr); $i++) {
+        Hasil::create([
+            'noStaff' => $tipe[$i]->noStaff,
+            'kedisiplinan' => $lantait[$i]->kedisiplinan,
+            'kerjasama' => $kamart[$i]->kerjasama,
+            'inisiatif' => $luast[$i]->inisiatif,
+            'kinerja' => $hargat[$i]->kinerja,
+            'presensi' => $garasit[$i]->presensi,
+            'ahp' => $finalScores[$i]
         ]);
     }
+
+    // return response()->json($finalScores);
+    $datahasil = DB::table('hasils')
+        ->orderBy('ahp', 'desc')
+        ->get();
+
+    $datamax = DB::table('hasils')
+        ->orderBy('ahp', 'desc')
+        ->limit(1)
+        ->get();
+
+    return view('admin/package/ahp/hasil', [
+        'data_hasil' => $datahasil,
+        'data_max' => $datamax
+    ]);
+}
+
+private function calculateNormalizedMatrix(array $dataArr)
+{
+    $size = count($dataArr);
+    $comparisonMatrix = [];
+
+    // Create the comparison matrix
+    for ($i = 0; $i < $size; $i++) {
+        for ($j = 0; $j < $size; $j++) {
+            $comparisonMatrix[$i][$j] = $dataArr[$i] / $dataArr[$j];
+        }
+    }
+
+    // Sum each column
+    $colSums = array_fill(0, $size, 0);
+    for ($j = 0; $j < $size; $j++) {
+        for ($i = 0; $i < $size; $i++) {
+            $colSums[$j] += $comparisonMatrix[$i][$j];
+        }
+    }
+
+    // Normalize the matrix
+    $normalizedMatrix = [];
+    for ($i = 0; $i < $size; $i++) {
+        for ($j = 0; $j < $size; $j++) {
+            $normalizedMatrix[$i][$j] = $comparisonMatrix[$i][$j] / $colSums[$j];
+        }
+    }
+
+    return $normalizedMatrix;
+}
+
+private function calculatePriorityVector(array $normalizedMatrix)
+{
+    $size = count($normalizedMatrix);
+    $priorityVector = array_fill(0, $size, 0);
+
+    // Sum each row to get the priority vector
+    for ($i = 0; $i < $size; $i++) {
+        for ($j = 0; $j < $size; $j++) {
+            $priorityVector[$i] += $normalizedMatrix[$i][$j];
+        }
+        $priorityVector[$i] /= $size;
+    }
+
+    return $priorityVector;
+}
+
+private function calculateWeightedPriority(array $priorityVector, $weight)
+{
+    return array_map(fn($value) => $value * $weight, $priorityVector);
+}
+
 
 
     public function postalt(Request $request)

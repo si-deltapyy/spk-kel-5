@@ -16,8 +16,6 @@ class CreateComparisonsTable extends Migration
         Schema::create('comparisons', function (Blueprint $table) {
             $table->id();
             $table->string('noStaff')->unique();
-            $table->string('nama');
-            $table->string('jabatan');
             $table->string('kinerja');
             $table->string('kedisiplinan');
             $table->string('inisiatif');

@@ -4,17 +4,17 @@
     <!-- MAIN CONTENT -->
     <div class="main-content">
         <div class="container-fluid">
-            <h3 class="page-title">Daftar Rekomendasi Rumah</h3>
+            <h3 class="page-title">Daftar Perangkingan Staff</h3>
             <div class="row">
                 <!-- TABLE STRIPED -->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Daftar Rekomendasi Rumah</h3>
+                        <h3 class="panel-title">Daftar Perangkingan Staff</h3>
                     </div>
                     <div style="margin-left: 30px;">
                         @foreach($data_max as $DM)
                         <button type="button" class="btn btn-info btn-toastr">
-                            <a href="/ahp/bobot/kesimpulan/{{ $DM->tipe }}" style="color:white;">Report</a>
+                            <a href="/ahp/bobot/kesimpulan/{{ $DM->noStaff }}" style="color:white;">Report</a>
                         </button>
                         <button type="button" class="btn btn-danger btn-toastr">
                             <a href="/ahp/bobot" style="color:white;">Hitung Ulang</a>
@@ -26,14 +26,13 @@
                             <thead>
                                 <tr>
                                     <th>Rangking</th>
-                                    <th>Tipe Rumah</th>
-                                    <th>Jumlah Lantai</th>
-                                    <th>Kamar Tidur</th>
-                                    <th width="90px">Luas Tanah</th>
-                                    <th>Harga</th>
-                                    <th>Garasi</th>
-                                    <th>Gambar Rumah</th>
-                                    <th>Nilai Ahp</th>
+                                    <th>ID Staff</th>
+                                    <th>Kinerja</th>
+                                    <th>Kedisiplinan</th>
+                                    <th>Kerjasama</th>
+                                    <th>Inisiatif</th>
+                                    <th>Inisiatif</th>
+                                    <th>AHP</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,13 +45,12 @@
                                         echo $no++;
                                         ?>
                                     </td>
-                                    <td>{{ $DH->tipe }}</td>
-                                    <td>{{ $DH->lantai }}</td>
-                                    <td>{{ $DH->kamar }}</td>
-                                    <td>{{ $DH->luas }} M<sup>2</sup></td>
-                                    <td>Rp. {{ $DH->harga }}</td>
-                                    <td>{{ $DH->garasi }}</td>
-                                    <td><img src="{{ url('/data_file/'.$DH->gambar) }}" alt="{{ $DH->gambar }}" width="200px" height="100px" margin="auto"></td>
+                                    <td>{{ $DH->noStaff }}</td>
+                                    <td>{{ $DH->kinerja }}</td>
+                                    <td>{{ $DH->kedisiplinan }}</td>
+                                    <td>{{ $DH->kerjasama }}</td>
+                                    <td>{{ $DH->inisiatif }}</td>
+                                    <td>{{ $DH->presensi }}</td>
                                     <td>{{ $DH->ahp }}</td>
                                 </tr>
                                 @endforeach

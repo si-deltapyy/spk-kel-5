@@ -15,13 +15,12 @@ class CreateHasilsTable extends Migration
     {
         Schema::create('hasils', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipe')->unique();
-            $table->string('lantai');
-            $table->string('kamar');
-            $table->string('luas');
-            $table->string('harga');
-            $table->string('garasi');
-            $table->string('gambar');
+            $table->string('noStaff')->unique();
+            $table->string('kinerja');
+            $table->string('kedisiplinan');
+            $table->string('inisiatif');
+            $table->string('kerjasama');
+            $table->string('presensi');
             $table->float('ahp');
             $table->timestamps();
         });

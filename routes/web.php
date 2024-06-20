@@ -114,6 +114,7 @@ Route::group(['middleware' => ['auth', 'cekrole:Admin,Customer']], function () {
     Route::post('/ahp/bobot/cekkonsistensi', [AhpController::class, 'cekkonsistensi'])->name('cekkonsistensi');
     Route::post('/ahp/bobot/posthasilrekomendasi', [AhpController::class, 'posthasilrekomendasi'])->name('posthasilrekomendasi');
     Route::get('/ahp/bobot/kesimpulan/{tipe}', [HasilController::class, 'tampilkesimpulan']);
+    Route::get('/ahp/bobot/kesimpulan', [HasilController::class, 'hasil']);
 
     // Cetak PDF
     Route::get('/ahp/bobot/kesimpulan/cetak/{tipe}', [HasilController::class, 'cetakpdf']);

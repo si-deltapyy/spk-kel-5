@@ -18,16 +18,16 @@
 								<thead>
 									<tr>
 										<th width="50px">Variabel</th>
-										<th width="50px">Lantai</th>
-										<th width="50px">Kamar</th>
-										<th width="50px">Luas</th>
-										<th width="50px">Harga</th>
-										<th width="50px">Garasi</th>
+										<th width="50px">Kerjasama</th>
+										<th width="50px">Inisiatif</th>
+										<th width="50px">Kedisiplinan</th>
+										<th width="50px">Kinerja</th>
+										<th width="50px">Presensi</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>Lantai</td>
+										<td>Kerjasama</td>
 										<td><input type="number" name="k1" value="{{ $k1 }}" readonly></td>
 										<td><input type="number" name="k2" value="{{ $k2 }}" readonly></td>
 										<td><input type="number" name="k3" value="{{ $k3 }}" readonly></td>
@@ -40,7 +40,7 @@
 									<td>{{ $k5 }}</td> -->
 									</tr>
 									<tr>
-										<td>Kamar</td>
+										<td>Inisiatif</td>
 										<td><input type="number" name="k6" value="{{ $k6 }}" readonly></td>
 										<td><input type="number" name="k7" value="{{ $k7 }}" readonly></td>
 										<td><input type="number" name="k8" value="{{ $k8 }}" readonly></td>
@@ -53,7 +53,7 @@
 									<td>{{ $k10 }}</td> -->
 									</tr>
 									<tr>
-										<td>Luas</td>
+										<td>Kedisiplinan</td>
 										<td><input type="number" name="k11" value="{{ $k11 }}" readonly></td>
 										<td><input type="number" name="k12" value="{{ $k12 }}" readonly></td>
 										<td><input type="number" name="k13" value="{{ $k13 }}" readonly></td>
@@ -66,7 +66,7 @@
 									<td>{{ $k15 }}</td> -->
 									</tr>
 									<tr>
-										<td>Harga</td>
+										<td>Kinerja</td>
 										<td><input type="number" name="k16" value="{{ $k16 }}" readonly></td>
 										<td><input type="number" name="k17" value="{{ $k17 }}" readonly></td>
 										<td><input type="number" name="k18" value="{{ $k18 }}" readonly></td>

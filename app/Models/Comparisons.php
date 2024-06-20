@@ -10,8 +10,6 @@ class Comparisons extends Model
     use HasFactory;
     protected $fillable = [
         'noStaff', 
-        'nama',
-        'jabatan',
         'kinerja',
         'kedisiplinan',
         'inisiatif',

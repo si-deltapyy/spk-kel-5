@@ -157,19 +157,15 @@ class RumahController extends Controller
     public function updaterumah(Request $request)
     {
         // update data 
-            DB::table('alternatives')->where('tipe', $request->tipe)->update([
-                'lantai' => $request->cblantai,
-                'kamar' => $request->cbkamar,
-                'luas' => $request->luas,
-                'harga' => $request->harga,
-                'garasi' => $request->cbgarasi,
-                'keterangan' => $request->keterangan,
-                'gambar' => $nama_file,
-                'gambar_denah' => $nama_filedenah
+            DB::table('alternatives')->where('noStaff', $request->no)->update([
+                'nama' => $request->nm,
+                'jabatan' => $request->jab,
+                'kinerja' => $request->kin,
+                'kedisiplinan' => $request->ked,
+                'inisiatif' => $request->ini,
+                'kerjasama' => $request->ker,
+                'presensi' => $request->pre,
             ]);
-            $tujuan_upload = 'data_file';
-            $file->move($tujuan_upload, $nama_file);
-            $filedenah->move($tujuan_upload, $nama_filedenah);
 
             if($request->luas <= 150){
                 $luasc = 1;
@@ -180,6 +176,8 @@ class RumahController extends Controller
             }else{
                 $luasc = 1;
             }
+
+            
 
             if($request->harga <= 1000000000){
                 $hargac = 1;
