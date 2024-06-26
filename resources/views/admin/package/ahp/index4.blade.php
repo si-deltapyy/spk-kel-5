@@ -17,13 +17,13 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th width="50px">Variabel</th>
-										<th width="50px">Lantai</th>
-										<th width="50px">Kamar</th>
-										<th width="50px">Luas</th>
-										<th width="50px">Harga</th>
-										<th width="50px">Garasi</th>
-										<th width="50px">Local Priority</th>
+									<th width="50px">Variabel</th>
+										<th width="50px">Kerjasama</th>
+										<th width="50px">Inisiatif</th>
+										<th width="50px">Kedisiplinan</th>
+										<th width="50px">Kinerja</th>
+										<th width="50px">Presensi</th>
+										<th width="50px">x</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -129,7 +129,7 @@
 					</div>
 					<script>
 						function kembalibobot() {
-							window.location.href = "/admin/ahp/bobot";
+							window.location.href = "/ahp/bobot";
 						}
 					</script>
 				</div>

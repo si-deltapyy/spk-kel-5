@@ -4,37 +4,35 @@
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
-			<h3 class="page-title">Normalisasi Matriks 3</h3>
+			<h3 class="page-title">Normalisasi Matriks</h3>
 			<div class="row">
 				<!-- TABLE STRIPED -->
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Normalisasi Matriks 3</h3>
+						<h3 class="panel-title">Normalisasi Matriks</h3>
 					</div>
 					<div class="panel-body">
-						<form action="{{ route('cekkonsistensi') }}" method="post">
+						<form action="{{ route('postmatriks') }}" method="post">
 							@csrf
 							<table class="table table-striped">
 								<thead>
 									<tr>
-									<th width="50px">Variabel</th>
+										<th width="50px">Variabel</th>
 										<th width="50px">Kerjasama</th>
 										<th width="50px">Inisiatif</th>
 										<th width="50px">Kedisiplinan</th>
 										<th width="50px">Kinerja</th>
 										<th width="50px">Presensi</th>
-										<th width="50px">x</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>Lantai</td>
+										<td>Kerjasama</td>
 										<td><input type="number" name="k1" value="{{ $k1 }}" readonly></td>
 										<td><input type="number" name="k2" value="{{ $k2 }}" readonly></td>
 										<td><input type="number" name="k3" value="{{ $k3 }}" readonly></td>
 										<td><input type="number" name="k4" value="{{ $k4 }}" readonly></td>
 										<td><input type="number" name="k5" value="{{ $k5 }}" readonly></td>
-										<td><input type="number" name="k31" value="{{ $k31 }}" readonly></td>
 										<!-- <td>{{ $k1 }}</td>
 									<td>{{ $k2 }}</td>
 									<td>{{ $k3 }}</td>
@@ -42,13 +40,12 @@
 									<td>{{ $k5 }}</td> -->
 									</tr>
 									<tr>
-										<td>Kamar</td>
+										<td>Inisiatif</td>
 										<td><input type="number" name="k6" value="{{ $k6 }}" readonly></td>
 										<td><input type="number" name="k7" value="{{ $k7 }}" readonly></td>
 										<td><input type="number" name="k8" value="{{ $k8 }}" readonly></td>
 										<td><input type="number" name="k9" value="{{ $k9 }}" readonly></td>
 										<td><input type="number" name="k10" value="{{ $k10 }}" readonly></td>
-										<td><input type="number" name="k32" value="{{ $k32 }}" readonly></td>
 										<!-- <td>{{ $k6 }}</td>
 									<td>{{ $k7 }}</td>
 									<td>{{ $k8 }}</td>
@@ -56,13 +53,12 @@
 									<td>{{ $k10 }}</td> -->
 									</tr>
 									<tr>
-										<td>Luas</td>
+										<td>Kedisiplinan</td>
 										<td><input type="number" name="k11" value="{{ $k11 }}" readonly></td>
 										<td><input type="number" name="k12" value="{{ $k12 }}" readonly></td>
 										<td><input type="number" name="k13" value="{{ $k13 }}" readonly></td>
 										<td><input type="number" name="k14" value="{{ $k14 }}" readonly></td>
 										<td><input type="number" name="k15" value="{{ $k15 }}" readonly></td>
-										<td><input type="number" name="k33" value="{{ $k33 }}" readonly></td>
 										<!-- <td>{{ $k11 }}</td>
 									<td>{{ $k12 }}</td>
 									<td>{{ $k13 }}</td>
@@ -70,13 +66,12 @@
 									<td>{{ $k15 }}</td> -->
 									</tr>
 									<tr>
-										<td>Harga</td>
+										<td>Kinerja</td>
 										<td><input type="number" name="k16" value="{{ $k16 }}" readonly></td>
 										<td><input type="number" name="k17" value="{{ $k17 }}" readonly></td>
 										<td><input type="number" name="k18" value="{{ $k18 }}" readonly></td>
 										<td><input type="number" name="k19" value="{{ $k19 }}" readonly></td>
 										<td><input type="number" name="k20" value="{{ $k20 }}" readonly></td>
-										<td><input type="number" name="k34" value="{{ $k34 }}" readonly></td>
 										<!-- <td>{{ $k16 }}</td>
 									<td>{{ $k17 }}</td>
 									<td>{{ $k18 }}</td>
@@ -90,7 +85,6 @@
 										<td><input type="number" name="k23" value="{{ $k23 }}" readonly></td>
 										<td><input type="number" name="k24" value="{{ $k24 }}" readonly></td>
 										<td><input type="number" name="k25" value="{{ $k25 }}" readonly></td>
-										<td><input type="number" name="k35" value="{{ $k35 }}" readonly></td>
 										<!-- <td>{{ $k21 }}</td>
 									<td>{{ $k22 }}</td>
 									<td>{{ $k23 }}</td>
@@ -104,7 +98,6 @@
 										<td><input type="number" name="k28" value="{{ $k28 }}" readonly></td>
 										<td><input type="number" name="k29" value="{{ $k29 }}" readonly></td>
 										<td><input type="number" name="k30" value="{{ $k30 }}" readonly></td>
-										<td><input type="text" name="" value="PROCESS AHP!" readonly></td>
 										<!-- <td>{{ $k26 }}</td>
 									<td>{{ $k27 }}</td>
 									<td>{{ $k28 }}</td>
@@ -115,7 +108,7 @@
 							</table>
 							<div class="row">
 								<div class="col-md-6">
-									<button type="submit" class="btn btn-primary btn-block">Cek Konsistensi</button>
+									<button type="submit" class="btn btn-primary btn-block">Normalisasi</button>
 								</div>
 								<div class="col-md-6">
 									<button type="button" class="btn btn-warning btn-block" onclick="kembalibobot();">Cancel</button>
@@ -125,7 +118,7 @@
 					</div>
 					<script>
 						function kembalibobot() {
-							window.location.href = "/ahp/bobot";
+							window.location.href = "/admin/ahp/bobot";
 						}
 					</script>
 				</div>

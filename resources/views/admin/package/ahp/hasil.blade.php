@@ -13,9 +13,9 @@
                     </div>
                     <div style="margin-left: 30px;">
                         @foreach($data_max as $DM)
-                        <button type="button" class="btn btn-info btn-toastr">
+                        <!-- <button type="button" class="btn btn-info btn-toastr">
                             <a href="/ahp/bobot/kesimpulan/{{ $DM->noStaff }}" style="color:white;">Report</a>
-                        </button>
+                        </button> -->
                         <button type="button" class="btn btn-danger btn-toastr">
                             <a href="/ahp/bobot" style="color:white;">Hitung Ulang</a>
                         </button>
