@@ -1177,10 +1177,9 @@ class AhpController extends Controller
         ->limit(1)
         ->get();
 
-    return view('admin/package/ahp/hasil', [
-        'data_hasil' => $datahasil,
-        'data_max' => $datamax
-    ]);
+
+
+return redirect()->route('kesimpulan');
 }
 
 private function calculateNormalizedMatrix(array $dataArr)

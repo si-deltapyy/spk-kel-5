@@ -247,6 +247,9 @@
 							</table>
 							<div class="row">
 								<div class="col-md-6">
+									<button type="button" class="btn btn-danger btn-block" onclick="">Simpan Bobot</button>
+								</div>
+								<div class="col-md-6">
 									<button type="submit" class="btn btn-primary btn-block">Hitung</button>
 								</div>
 								<div class="col-md-6">
