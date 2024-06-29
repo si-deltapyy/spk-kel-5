@@ -13,12 +13,12 @@
                     </div>
                     <div style="margin-left: 30px;">
                         @foreach($data_max as $DM)
-                        <!-- <button type="button" class="btn btn-info btn-toastr">
-                            <a href="/ahp/bobot/kesimpulan/{{ $DM->noStaff }}" style="color:white;">Report</a>
-                        </button> -->
-                        <button type="button" class="btn btn-danger btn-toastr">
-                            <a href="/ahp/bobot" style="color:white;">Hitung Ulang</a>
-                        </button>
+                        <form action="{{ route('indexbobot') }}">
+                        <!-- <form action="{{ route('postbobot') }}" method="post"> -->
+                            @csrf
+                            <input type="hidden" name="staff_id" value="{{ $DM->noStaff }}">
+                            <button type="submit" class="btn btn-danger btn-toastr" style="color:white;">Hitung Ulang</button>
+                        </form>
                         @endforeach
                     </div>
                     <div class="panel-body">

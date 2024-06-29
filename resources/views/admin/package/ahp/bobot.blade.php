@@ -11,7 +11,14 @@
 						<h3 class="panel-title">Nilai Perbandingan Matriks</h3>
 					</div>
 					<div class="panel-body">
-						<form action="{{ route('postbobot') }}" method="post">
+						@if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
+                        <form action="{{ route('postbobot') }}" method="post">
+
 							@csrf
 							<table class="table table-striped">
 								<thead>
@@ -245,22 +252,22 @@
 								</tbody>
 								<br>
 							</table>
-							<div class="row">
-								<div class="col-md-6">
-									<button type="button" class="btn btn-danger btn-block" onclick="">Simpan Bobot</button>
-								</div>
-								<div class="col-md-6">
-									<button type="submit" class="btn btn-primary btn-block">Hitung</button>
-								</div>
-								<div class="col-md-6">
-									<button type="button" class="btn btn-warning btn-block" onclick="kembalibobot();">Cancel</button>
-								</div>
-							</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary btn-block" formaction="{{ route('postbobotsave') }}">Save</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary btn-block" formaction="{{ route('postbobot') }}">Hitung</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-warning btn-block" onclick="kembalibobot();">Cancel</button>
+                                </div>
+                            </div>
 						</form>
 					</div>
 					<script>
                         function kembalibobot() {
-                            window.location.href = "/admin/alternative";
+                            window.location.href = "/admin";
                         }
                     </script>
 				</div>

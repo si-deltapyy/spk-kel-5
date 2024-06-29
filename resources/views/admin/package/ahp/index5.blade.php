@@ -66,7 +66,7 @@
 					</div>
 					<script>
 						function kembalibobot() {
-							window.location.href = "/admin/ahp/bobot";
+							window.location.href = "{{ route('indexbobot') }}";
 						}
 					</script>
 				</div>

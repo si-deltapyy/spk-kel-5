@@ -128,7 +128,7 @@
 					</div>
 					<script>
 						function kembalibobot() {
-							window.location.href = "/ahp/bobot";
+							window.location.href = "{{ route('indexbobot') }}";
 						}
 					</script>
 				</div>
