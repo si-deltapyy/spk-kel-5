@@ -104,10 +104,18 @@
 										<td><input type="number" name="k28" value="{{ $k28 }}" readonly></td>
 										<td><input type="number" name="k29" value="{{ $k29 }}" readonly></td>
 										<td><input type="number" name="k30" value="{{ $k30 }}" readonly></td>
+										<td></td>
+									</tr>
 										@if($cr < 0.1)
-										<td><input type="text" name="" value="Konsisten kok :D, Karena nilai Cr : {{ $cr }} < 0.1" readonly></td>
+										<tr>
+										<td>Konsistensi:</td>
+										<td>Konsisten!,<br>Karena nilai Cr : {{ $cr }} < 0.1</td>
+										</td>
 										@else
-										<td><input type="text" name="" value="Tidak Konsisten Bos !, Karena nilai Cr : {{ $cr }} > 0.1" readonly></td>
+										<tr>
+										<td>Konsistensi:</td>
+										<td>Maaf, Tidak Konsisten!,<br>Karena nilai Cr : {{ $cr }} > 0.1</td>
+										</td>
 										@endif
 										<!-- <td>{{ $k26 }}</td>
 									<td>{{ $k27 }}</td>
