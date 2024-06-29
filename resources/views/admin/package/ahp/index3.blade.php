@@ -104,12 +104,15 @@
 										<td><input type="number" name="k28" value="{{ $k28 }}" readonly></td>
 										<td><input type="number" name="k29" value="{{ $k29 }}" readonly></td>
 										<td><input type="number" name="k30" value="{{ $k30 }}" readonly></td>
-										<td><input type="text" name="" value="PROCESS AHP!" readonly></td>
+										<td></td>
 										<!-- <td>{{ $k26 }}</td>
 									<td>{{ $k27 }}</td>
 									<td>{{ $k28 }}</td>
 									<td>{{ $k29 }}</td>
 									<td>{{ $k30 }}</td> -->
+									</tr>
+									<tr>
+									<td><input type="text" name="" value="Cek Konsistensi!" readonly></td>
 									</tr>
 								</tbody>
 							</table>
@@ -125,7 +128,7 @@
 					</div>
 					<script>
 						function kembalibobot() {
-							window.location.href = "/ahp/bobot";
+							window.location.href = "{{ route('indexbobot') }}";
 						}
 					</script>
 				</div>

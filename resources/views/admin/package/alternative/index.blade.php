@@ -82,12 +82,12 @@
                                 @endforeach
                                 @else
                                 <tr>
-                                    <td colspan="6">Data tidak tersedia</td>
+                                    <td colspan="6">Data tidak tersedia, silahkan gunakan tombol refresh.</td>
                                 </tr>
                                 @endif
                                 @else
                                 <tr>
-                                    <td colspan="6">Data tidak tersedia</td>
+                                    <td colspan="6">Data tidak tersedia, silahkan gunakan tombol refresh.</td>
                                 </tr>
                                 @endif
                             </tbody>
